@@ -1,5 +1,5 @@
 # Binaries
-generate
+bin/
 *.exe
 
 # Output directory (generated files)

@@ -54,10 +54,10 @@ https://<your-domain>/{team}-{alarms}.ics
 go test ./...
 
 # Build
-go build -o generate ./cmd/generate
+go build -o bin/generate ./cmd/generate
 
 # Generate calendars
-./generate -output dist
+./bin/generate -output dist
 ```
 
 ### Project Structure

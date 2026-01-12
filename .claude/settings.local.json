@@ -9,7 +9,14 @@
       "Bash(go build:*)",
       "Bash(/Users/thomasoddsund/utv/hockeykalender/generate:*)",
       "Bash(curl:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "Bash(jj status:*)",
+      "Bash(jj log:*)",
+      "Bash(jj file list:*)",
+      "Bash(jj file track:*)",
+      "Bash(git ls-tree:*)"
     ]
   }
 }

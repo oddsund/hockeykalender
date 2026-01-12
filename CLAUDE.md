@@ -57,8 +57,8 @@ go test ./...
 
 ### Generate calendars locally
 ```bash
-go build -o generate ./cmd/generate
-./generate -output dist
+go build -o bin/generate ./cmd/generate
+./bin/generate -output dist
 ```
 
 ### Add a new alarm option
@@ -87,5 +87,6 @@ The app automatically detects the current season from the API (first in list).
 ## Files to Never Edit
 
 - `.jj/` - jujutsu version control
+- `bin/` - compiled binaries (gitignored)
 - `dist/` - generated output (gitignored)
 - `go.sum` - auto-managed by Go
