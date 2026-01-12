@@ -1,0 +1,245 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: #1a4d8c;
+    --primary-dark: #0f3460;
+    --secondary: #e63946;
+    --bg: #f8f9fa;
+    --text: #212529;
+    --text-light: #6c757d;
+    --border: #dee2e6;
+    --card-bg: #ffffff;
+    --radius: 8px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+main {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+/* Selector Section */
+.selector {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.field {
+    margin-bottom: 1.25rem;
+}
+
+.field:last-child {
+    margin-bottom: 0;
+}
+
+.field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+select {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: white;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(26, 77, 140, 0.1);
+}
+
+.checkboxes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+.checkboxes label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.checkboxes input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+}
+
+/* Subscribe Button */
+.subscribe {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.button {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius);
+    transition: background 0.2s;
+}
+
+.button:hover {
+    background: var(--primary-dark);
+}
+
+.hint {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Instructions */
+.instructions {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.instructions h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+details {
+    border-top: 1px solid var(--border);
+    padding: 1rem 0;
+}
+
+details:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+details:last-of-type {
+    padding-bottom: 0;
+}
+
+summary {
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.5rem 0;
+}
+
+summary:hover {
+    color: var(--primary);
+}
+
+details ol {
+    margin: 1rem 0 0 1.5rem;
+}
+
+details li {
+    margin-bottom: 0.5rem;
+}
+
+.copy-link {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.copy-link code {
+    background: var(--bg);
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    word-break: break-all;
+    flex: 1;
+    min-width: 200px;
+}
+
+.copy-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.copy-btn:hover {
+    background: var(--primary-dark);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    main {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .checkboxes {
+        grid-template-columns: 1fr;
+    }
+
+    .button {
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.ehl.no)",
+      "WebFetch(domain:live.hockey.no)",
+      "Bash(go mod init:*)",
+      "Bash(go test:*)",
+      "Bash(go get:*)",
+      "Bash(go build:*)",
+      "Bash(/Users/thomasoddsund/utv/hockeykalender/generate:*)",
+      "Bash(curl:*)",
+      "Bash(ls:*)"
+    ]
+  }
+}

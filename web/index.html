@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EHL Kalender - EliteHockey Ligaen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>EHL Kalender</h1>
+            <p class="subtitle">Abonner på kamper fra EliteHockey Ligaen</p>
+        </header>
+
+        <section class="selector">
+            <div class="field">
+                <label for="team">Velg lag</label>
+                <select id="team">
+                    <option value="ehl">Alle lag (EHL)</option>
+                    <option value="frisk-asker">Frisk Asker</option>
+                    <option value="lillehammer">Lillehammer</option>
+                    <option value="lorenskog">Lørenskog</option>
+                    <option value="narvik">Narvik</option>
+                    <option value="nidaros">Nidaros</option>
+                    <option value="oilers">Stavanger Oilers</option>
+                    <option value="sparta">Sparta</option>
+                    <option value="stjernen">Stjernen</option>
+                    <option value="storhamar">Storhamar</option>
+                    <option value="valerenga">Vålerenga</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Varsler</label>
+                <div class="checkboxes">
+                    <label><input type="checkbox" id="alarm-1d"> 1 dag før</label>
+                    <label><input type="checkbox" id="alarm-3h"> 3 timer før</label>
+                    <label><input type="checkbox" id="alarm-1h" checked> 1 time før</label>
+                    <label><input type="checkbox" id="alarm-15m"> 15 min før</label>
+                </div>
+            </div>
+        </section>
+
+        <section class="subscribe">
+            <a id="subscribe-btn" href="#" class="button">Abonner på kalender</a>
+            <p class="hint">Åpner i din standard kalender-app</p>
+        </section>
+
+        <section class="instructions">
+            <h2>Slik bruker du kalenderen</h2>
+
+            <details>
+                <summary>iPhone / iPad</summary>
+                <ol>
+                    <li>Trykk på "Abonner på kalender"-knappen</li>
+                    <li>Kalender-appen åpnes automatisk</li>
+                    <li>Trykk "Abonner" for å bekrefte</li>
+                </ol>
+            </details>
+
+            <details>
+                <summary>Android</summary>
+                <ol>
+                    <li>Trykk på "Abonner på kalender"-knappen</li>
+                    <li>Velg Google Kalender når du blir spurt</li>
+                    <li>Trykk "Ja" for å legge til kalenderen</li>
+                </ol>
+            </details>
+
+            <details>
+                <summary>Mac (Apple Calendar)</summary>
+                <ol>
+                    <li>Trykk på "Abonner på kalender"-knappen</li>
+                    <li>Kalender-appen åpnes med en dialog</li>
+                    <li>Trykk "Abonner" for å fullføre</li>
+                </ol>
+            </details>
+
+            <details>
+                <summary>Google Calendar (web)</summary>
+                <ol>
+                    <li>Kopier lenken under (høyreklikk → Kopier lenkeadresse)</li>
+                    <li>Åpne <a href="https://calendar.google.com" target="_blank">Google Calendar</a></li>
+                    <li>Klikk på "+" ved "Andre kalendere" i sidepanelet</li>
+                    <li>Velg "Fra URL"</li>
+                    <li>Lim inn lenken og klikk "Legg til kalender"</li>
+                </ol>
+                <p class="copy-link">
+                    <code id="calendar-url">https://example.com/valerenga.ics</code>
+                    <button onclick="copyUrl()" class="copy-btn">Kopier</button>
+                </p>
+            </details>
+
+            <details>
+                <summary>Outlook</summary>
+                <ol>
+                    <li>Trykk på "Abonner på kalender"-knappen</li>
+                    <li>Outlook åpner en dialog</li>
+                    <li>Klikk "Ja" for å abonnere</li>
+                </ol>
+            </details>
+        </section>
+
+        <footer>
+            <p>
+                Kalenderen oppdateres daglig.
+                <br>
+                Kilde: <a href="https://www.ehl.no" target="_blank">ehl.no</a>
+            </p>
+        </footer>
+    </main>
+
+    <script>
+        const BASE_URL = window.location.origin;
+
+        function getSelectedAlarms() {
+            const alarms = [];
+            if (document.getElementById('alarm-1d').checked) alarms.push('1d');
+            if (document.getElementById('alarm-3h').checked) alarms.push('3h');
+            if (document.getElementById('alarm-1h').checked) alarms.push('1h');
+            if (document.getElementById('alarm-15m').checked) alarms.push('15m');
+            return alarms;
+        }
+
+        function getFilename() {
+            const team = document.getElementById('team').value;
+            const alarms = getSelectedAlarms();
+
+            if (alarms.length === 0) {
+                return `${team}.ics`;
+            }
+            return `${team}-${alarms.join('-')}.ics`;
+        }
+
+        function updateSubscribeLink() {
+            const filename = getFilename();
+            const httpsUrl = `${BASE_URL}/${filename}`;
+            const webcalUrl = httpsUrl.replace('https://', 'webcal://').replace('http://', 'webcal://');
+
+            document.getElementById('subscribe-btn').href = webcalUrl;
+            document.getElementById('calendar-url').textContent = httpsUrl;
+        }
+
+        function copyUrl() {
+            const url = document.getElementById('calendar-url').textContent;
+            navigator.clipboard.writeText(url).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.textContent = 'Kopiert!';
+                setTimeout(() => btn.textContent = 'Kopier', 2000);
+            });
+        }
+
+        // Update link when selections change
+        document.getElementById('team').addEventListener('change', updateSubscribeLink);
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', updateSubscribeLink);
+        });
+
+        // Initialize
+        updateSubscribeLink();
+    </script>
+</body>
+</html>
