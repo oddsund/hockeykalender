@@ -16,7 +16,9 @@
       "Bash(jj log:*)",
       "Bash(jj file list:*)",
       "Bash(jj file track:*)",
-      "Bash(git ls-tree:*)"
+      "Bash(git ls-tree:*)",
+      "Bash(gh repo view:*)",
+      "WebFetch(domain:oddsund.github.io)"
     ]
   }
 }
