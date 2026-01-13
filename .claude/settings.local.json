@@ -18,7 +18,8 @@
       "Bash(jj file track:*)",
       "Bash(git ls-tree:*)",
       "Bash(gh repo view:*)",
-      "WebFetch(domain:oddsund.github.io)"
+      "WebFetch(domain:oddsund.github.io)",
+      "Skill(frontend-design)"
     ]
   }
 }
