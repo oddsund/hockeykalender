@@ -186,3 +186,34 @@ func TestGenerateCalendar_LineEndings(t *testing.T) {
 		t.Error("expected CRLF line endings")
 	}
 }
+
+func TestGenerateCalendar_WithScores(t *testing.T) {
+	// Create a game with scores
+	games := []ehl.Game{
+		{
+			UUID:      "game-finished",
+			StartTime: time.Date(2025, 9, 11, 17, 0, 0, 0, time.UTC),
+			State:     "post-game",
+			HomeTeam: ehl.Team{
+				UUID:      "team-vif",
+				Code:      "VIF",
+				ShortName: "Vålerenga",
+				Score:     4,
+			},
+			AwayTeam: ehl.Team{
+				UUID:      "team-sth",
+				Code:      "STH",
+				ShortName: "Storhamar",
+				Score:     2,
+			},
+			Venue: "Jordal Amfi",
+		},
+	}
+
+	result := GenerateCalendar(games, "", []Alarm{}, "2025/2026")
+
+	// Check SUMMARY includes the score
+	if !strings.Contains(result, "SUMMARY:Vålerenga 4 - 2 Storhamar") {
+		t.Error("expected SUMMARY to include score: Vålerenga 4 - 2 Storhamar")
+	}
+}
