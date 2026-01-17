@@ -210,6 +210,18 @@ select option {
     cursor: pointer;
 }
 
+/* Alarm Warning */
+.alarm-warning {
+    margin-top: 1rem;
+    padding: 0.875rem 1rem;
+    background: var(--ice-glow);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-dim);
+}
+
 /* Subscribe Section */
 .subscribe {
     text-align: center;

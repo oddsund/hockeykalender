@@ -66,7 +66,13 @@ func filterGamesByTeam(games []ehl.Game, teamName string) []ehl.Game {
 func formatEvent(game ehl.Game, alarms []Alarm) string {
 	var sb strings.Builder
 
-	summary := fmt.Sprintf("%s vs %s", game.HomeTeam.ShortName, game.AwayTeam.ShortName)
+	// Include score in summary if the game has been played (either team has a score)
+	var summary string
+	if game.HomeTeam.Score > 0 || game.AwayTeam.Score > 0 {
+		summary = fmt.Sprintf("%s %d - %d %s", game.HomeTeam.ShortName, game.HomeTeam.Score, game.AwayTeam.Score, game.AwayTeam.ShortName)
+	} else {
+		summary = fmt.Sprintf("%s vs %s", game.HomeTeam.ShortName, game.AwayTeam.ShortName)
+	}
 	uid := fmt.Sprintf("%s@%s", game.UUID, UIDDomain)
 	dtstamp := time.Now().UTC().Format("20060102T150405Z")
 	dtstart := game.StartTime.UTC().Format("20060102T150405Z")
