@@ -222,6 +222,22 @@ select option {
     color: var(--text-dim);
 }
 
+/* Security Note */
+.security-note {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(255, 107, 53, 0.1);
+    border: 1px solid rgba(255, 107, 53, 0.25);
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-dim);
+}
+
+.security-note strong {
+    color: var(--warmth);
+}
+
 /* Subscribe Section */
 .subscribe {
     text-align: center;
